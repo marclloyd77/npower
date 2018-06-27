@@ -36,7 +36,7 @@ article {
 
 }
 
-@media (max-width: 690px) {
+@media (max-width: 480px) {
     h2 {
         font-size: 1.1em;
     }
@@ -44,9 +44,7 @@ article {
     p {
         font-size: 0.75em;
     }
-}
 
-@media (max-width: 550px) {
     .logo {
         margin: 0 auto;
     }
