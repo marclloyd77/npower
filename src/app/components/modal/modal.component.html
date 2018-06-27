@@ -1,0 +1,12 @@
+<button (click)="openModal()">{{options.buttonText}}</button>
+<div class="modal" [ngClass]="{ 'open': showModal }" #modal>
+	<div>
+		<a (click)="closeModal()" class="close">X</a>
+		<h2 tabindex="0">
+			{{options.title}}
+		</h2>
+		<p tabindex="1">
+			{{options.text}}
+		</p>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+/******** COLOUR VARIABLES **********/
+
+$text: #444;
+$headings: #333;
+
+/******** GLOBAL STYLES **********/
+
+body {
+    background: #aaaaaa;
+    font-family: 'helvetica neue', helvetiva, arial, sans-serif;
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 1.25em;
+    margin: 0 0 1em;
+    color: $headings;
+}
+
+p {
+    font-size: 0.875em;
+    line-height: 1.5em;
+    color: $text;
+}

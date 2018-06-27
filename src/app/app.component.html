@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <header>
+    <img src="" alt="nPower"/>
+  </header>
+
+  <main>
+    <section>
+      <article *ngFor="let d of data; let idx = index">
+        <img [src]="d.image" alt=""/>
+        <div>
+          <h2>{{d.title}}</h2>
+          <p>
+            {{d.text}}
+          </p>
+          <app-modal [options]="{ buttonText: 'Modal ' + idx, title: d.title, text: d.text }"></app-modal>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>

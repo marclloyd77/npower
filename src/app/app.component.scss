@@ -1,0 +1,46 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+article {
+
+    flex-grow: 1;
+    flex-basis: 0;
+    background: #fff;
+    margin: 10px;
+
+    div {
+        padding: 20px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 690px) {
+    h2 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 550px) {
+    section {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,53 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    > div {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    &.open {
+        display: block;
+
+        > div {
+            animation: slideDown 300ms;
+        }
+    }
+
+    .close {
+        display: block;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        border-radius: 50%;
+        text-align: center;
+        border: 1px solid #e3e3e3;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 0.75em;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+    100% {
+        top: 50%;
+        opacity: 1;
+    }
+}
