@@ -3,8 +3,11 @@
     margin: 0 auto;
 }
 
-header {
-
+.logo {
+    display: block;
+    width: 180px;
+    height: auto;
+    margin: 30px 0 20px 10px;
 }
 
 section {
@@ -40,6 +43,9 @@ article {
 }
 
 @media (max-width: 550px) {
+    .logo {
+        margin: 30px auto 20px;
+    }
     section {
         flex-direction: column;
     }
