@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { ModalOptions } from '../../interface/modalOptions';
 
 @Component( {
     selector: 'app-modal',
@@ -8,8 +9,8 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 export class ModalComponent implements OnInit {
 
     showModal: boolean;
-    @Input() options: any; // TODO modal interface
-    @ViewChild( 'modal' ) modal;
+    @Input() options: ModalOptions;
+    @ViewChild( 'modal' ) modal: ElementRef;
 
     constructor() {
     }
