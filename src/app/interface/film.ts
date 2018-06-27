@@ -1,5 +1,6 @@
 export interface Film {
-  title: string;
-  image: string;
-  text: string;
+    title: string;
+    image: string;
+    imageSml: string;
+    text: string;
 }

@@ -1,20 +1,20 @@
 <div class="wrapper">
-  <header>
-    <img src="assets/logo.png" alt="npower" class="logo" />
-  </header>
+    <header>
+        <img src="assets/logo.png" alt="npower" class="logo"/>
+    </header>
 
-  <main>
-    <section>
-      <article *ngFor="let d of data; let idx = index">
-        <img [src]="d.image" alt=""/>
-        <div>
-          <h2>{{d.title}}</h2>
-          <p>
-            {{d.text}}
-          </p>
-          <app-modal [options]="{ buttonText: 'Modal ' + (idx + 1), title: 'Modal ' + (idx + 1) + ' - Title', text: d.text }"></app-modal>
-        </div>
-      </article>
-    </section>
-  </main>
+    <main>
+        <section>
+            <article *ngFor="let d of data; let idx = index">
+                <img [src]="d.imageSml" srcset="{{d.imageSml}} 1000w, {{d.image}} 2000w" alt="Suitable alt text">
+                <div>
+                    <h2>{{d.title}}</h2>
+                    <p>
+                        {{d.text}}
+                    </p>
+                    <app-modal [options]="{ buttonText: 'Modal ' + (idx + 1), title: 'Modal ' + (idx + 1) + ' - Title', text: d.text }"></app-modal>
+                </div>
+            </article>
+        </section>
+    </main>
 </div>
