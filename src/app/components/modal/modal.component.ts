@@ -27,11 +27,12 @@ export class ModalComponent implements OnInit {
 
     openModal() {
         this.showModal = true;
-        this.modal.nativeElement.focus();
+        document.getElementsByTagName( 'body' )[ 0 ].style.overflow = 'hidden';
     }
 
     closeModal() {
         this.showModal = false;
+        document.getElementsByTagName( 'body' )[ 0 ].removeAttribute( 'style' );
     }
 
 }
