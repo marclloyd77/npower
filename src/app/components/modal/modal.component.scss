@@ -38,6 +38,13 @@
         right: 20px;
         cursor: pointer;
         font-size: 0.75em;
+        transition: all 200ms ease;
+
+        &:hover {
+            background: #125ea5;
+            color: #fff;
+            border-color: #125ea5;
+        }
     }
 }
 
