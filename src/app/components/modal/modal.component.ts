@@ -42,7 +42,7 @@ export class ModalComponent implements OnInit {
          * @param e
          */
         this.clickEvents = ( e ) => {
-            if ( e.srcElement.className ) {
+            if ( e.target.classList.value === 'modal open' ) {
                 this.closeModal();
             }
         };
