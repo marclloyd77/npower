@@ -23,6 +23,7 @@ export class ModalComponent implements OnInit {
             if ( e.code === 'Escape' || e.code === 'Enter' ) {
                 this.closeModal();
             } else if ( e.code === 'Tab' || e.code === 'ShiftLeft' ) {
+                e.preventDefault();
                 setTimeout( () => {
                     this.modalCloseButton.nativeElement.focus();
                 }, 0 );
