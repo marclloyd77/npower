@@ -1,7 +1,7 @@
 <button (click)="openModal(); modalCloseButton.focus()">{{options.buttonText}}</button>
 <div class="modal" [ngClass]="{ 'open': showModal }"  role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
 	<div>
-		<a (click)="closeModal()" class="close" #modalCloseButton tabindex="0">X</a>
+		<a (click)="closeModal()" class="close" #modalCloseButton tabindex="0" aria-label="Close">X</a>
 		<h2 id="dialogTitle">
 			{{options.title}}
 		</h2>
