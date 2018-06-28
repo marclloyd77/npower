@@ -9,6 +9,8 @@ import { ModalOptions } from '../../interface/modalOptions';
 export class ModalComponent implements OnInit {
 
     showModal: boolean;
+    private keyDownEventListeners;
+    private clickEventListeners;
     @Input() options: ModalOptions;
     @ViewChild( 'modalCloseButton' ) modalCloseButton: ElementRef;
     @ViewChild( 'overlay' ) overlay: ElementRef;
@@ -17,61 +19,60 @@ export class ModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        /**
-         * Close modal using esc
-         */
-        window.addEventListener( 'keydown', ( e ) => {
-            if ( e.code === 'Escape' ) {
+        this.keyDownEventListeners = ( e ) => {
+            if ( e.code === 'Escape' || e.code === 'Enter' ) {
+                this.closeModal();
+            } else if ( e.code === 'Tab' || e.code === 'ShiftLeft' ) {
+                setTimeout( () => {
+                    this.modalCloseButton.nativeElement.focus();
+                }, 0 );
+            }
+        };
+
+        this.clickEventListeners = ( e ) => {
+            if ( e.srcElement.className ) {
                 this.closeModal();
             }
-        } );
+        };
     }
 
     openModal() {
         this.showModal = true;
+
         /**
          * Prevent body scroll
          * @type {string}
          */
         document.getElementsByTagName( 'body' )[ 0 ].style.overflow = 'hidden';
 
+        /**
+         * Focus on modal (close button)
+         */
         setTimeout( () => {
-            /**
-             * Focus on modal (close button)
-             */
             this.modalCloseButton.nativeElement.focus();
-
-            /**
-             * Enter button closes modal
-             */
-            this.modalCloseButton.nativeElement.addEventListener( 'keydown', ( e ) => {
-                if ( e.code === 'Enter' ) {
-                    this.closeModal();
-                }
-            } );
         }, 0 );
 
         /**
-         * Lock focus in modal
+         * Add event listeners for focus trap and keyboard controls
          */
-        window.addEventListener( 'keydown', ( e ) => {
-            if ( e.code === 'Tab' || e.code === 'ShiftLeft' ) {
-                setTimeout( () => {
-                    this.modalCloseButton.nativeElement.focus();
-                }, 0 );
-            }
-        } );
-
-        this.overlay.nativeElement.addEventListener( 'click', ( e ) => {
-            if ( e.srcElement.className ) {
-                this.closeModal();
-            }
-        } );
+        window.addEventListener( 'keydown', this.keyDownEventListeners );
+        this.overlay.nativeElement.addEventListener( 'click', this.clickEventListeners );
     }
 
     closeModal() {
-        this.showModal = false;
+
+        /**
+         * Remove event listeners
+         */
+        window.removeEventListener( 'keydown', this.keyDownEventListeners );
+        this.overlay.nativeElement.removeEventListener( 'click', this.clickEventListeners );
+
+        /**
+         * Allow body scrolling
+         */
         document.getElementsByTagName( 'body' )[ 0 ].removeAttribute( 'style' );
+
+        this.showModal = false;
     }
 
 }
