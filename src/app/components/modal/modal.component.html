@@ -1,11 +1,11 @@
-<button (click)="openModal()">{{options.buttonText}}</button>
-<div class="modal" [ngClass]="{ 'open': showModal }" #modal>
+<button (click)="openModal(); modalCloseButton.focus()">{{options.buttonText}}</button>
+<div class="modal" [ngClass]="{ 'open': showModal }"  role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
 	<div>
-		<a (click)="closeModal()" class="close">X</a>
-		<h2 tabindex="0">
+		<a (click)="closeModal()" class="close" #modalCloseButton tabindex="0">X</a>
+		<h2 id="dialogTitle">
 			{{options.title}}
 		</h2>
-		<p tabindex="1">
+		<p id="dialogDesc">
 			{{options.text}}
 		</p>
 	</div>

@@ -10,7 +10,7 @@ export class ModalComponent implements OnInit {
 
     showModal: boolean;
     @Input() options: ModalOptions;
-    @ViewChild( 'modal' ) modal: ElementRef;
+    @ViewChild( 'modalCloseButton' ) modalCloseButton: ElementRef;
 
     constructor() {
     }
@@ -28,7 +28,38 @@ export class ModalComponent implements OnInit {
 
     openModal() {
         this.showModal = true;
+        /**
+         * Prevent body scroll
+         * @type {string}
+         */
         document.getElementsByTagName( 'body' )[ 0 ].style.overflow = 'hidden';
+
+        setTimeout( () => {
+            /**
+             * Focus on modal (close button)
+             */
+            this.modalCloseButton.nativeElement.focus();
+
+            /**
+             * Enter button closes modal
+             */
+            this.modalCloseButton.nativeElement.addEventListener( 'keydown', ( e ) => {
+                if ( e.code === 'Enter' ) {
+                    this.closeModal();
+                }
+            } );
+        }, 0 );
+
+        /**
+         * Lock focus in modal
+         */
+        window.addEventListener( 'keydown', ( e ) => {
+            if ( e.code === 'Tab' || e.code === 'ShiftLeft' ) {
+                setTimeout( () => {
+                    this.modalCloseButton.nativeElement.focus();
+                }, 0 );
+            }
+        } );
     }
 
     closeModal() {

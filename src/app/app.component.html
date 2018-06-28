@@ -1,11 +1,11 @@
 <div class="wrapper">
-    <header>
+    <header role="banner">
         <img src="assets/logo.png" alt="npower" class="logo"/>
     </header>
 
     <main>
         <section>
-            <article *ngFor="let d of data; let idx = index">
+            <article *ngFor="let d of data; let idx = index" role="article">
                 <img [src]="d.imageSml" srcset="{{d.imageSml}} 1000w, {{d.image}} 2000w" alt="Suitable alt text">
                 <div>
                     <h2>{{d.title}}</h2>
