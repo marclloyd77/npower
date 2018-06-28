@@ -17,6 +17,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
 * Modal added dynamically in ngFor
 * Modal can be closed by clicking overlay, pressing escape, or using space/enter when close button is focussed
 * Modal has focus trap
-* Focus is returned to open button when modal is closed.
+* Focus is returned to open button when modal is closed
 * Page content scroll is disabled when modal is open
-* Modal opening has been animated.
+* Modal opening has been animated
