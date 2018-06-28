@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
     showModal: boolean;
     @Input() options: ModalOptions;
     @ViewChild( 'modalCloseButton' ) modalCloseButton: ElementRef;
+    @ViewChild( 'overlay' ) overlay: ElementRef;
 
     constructor() {
     }
@@ -58,6 +59,12 @@ export class ModalComponent implements OnInit {
                 setTimeout( () => {
                     this.modalCloseButton.nativeElement.focus();
                 }, 0 );
+            }
+        } );
+
+        this.overlay.nativeElement.addEventListener( 'click', ( e ) => {
+            if ( e.srcElement.className ) {
+                this.closeModal();
             }
         } );
     }

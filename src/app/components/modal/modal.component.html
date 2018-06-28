@@ -1,6 +1,6 @@
 <button (click)="openModal(); modalCloseButton.focus()">{{options.buttonText}}</button>
-<div class="modal" [ngClass]="{ 'open': showModal }"  role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
-	<div>
+<div class="modal" [ngClass]="{ 'open': showModal }" #overlay>
+	<div role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
 		<a (click)="closeModal()" class="close" #modalCloseButton tabindex="0" aria-label="Close">X</a>
 		<h2 id="dialogTitle">
 			{{options.title}}
