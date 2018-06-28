@@ -9,8 +9,8 @@ import { ModalOptions } from '../../interface/modalOptions';
 export class ModalComponent implements OnInit {
 
     showModal: boolean;
-    private keyDownEventListeners;
-    private clickEventListeners;
+    private keyDownEvents;
+    private clickEvents;
     @Input() options: ModalOptions;
     @ViewChild( 'modalCloseButton' ) modalCloseButton: ElementRef;
     @ViewChild( 'overlay' ) overlay: ElementRef;
@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.keyDownEventListeners = ( e ) => {
+        this.keyDownEvents = ( e ) => {
             if ( e.code === 'Escape' || e.code === 'Enter' ) {
                 this.closeModal();
             } else if ( e.code === 'Tab' || e.code === 'ShiftLeft' ) {
@@ -30,7 +30,7 @@ export class ModalComponent implements OnInit {
             }
         };
 
-        this.clickEventListeners = ( e ) => {
+        this.clickEvents = ( e ) => {
             if ( e.srcElement.className ) {
                 this.closeModal();
             }
@@ -56,8 +56,8 @@ export class ModalComponent implements OnInit {
         /**
          * Add event listeners for focus trap and keyboard controls
          */
-        window.addEventListener( 'keydown', this.keyDownEventListeners );
-        this.overlay.nativeElement.addEventListener( 'click', this.clickEventListeners );
+        window.addEventListener( 'keydown', this.keyDownEvents );
+        this.overlay.nativeElement.addEventListener( 'click', this.clickEvents );
     }
 
     closeModal() {
@@ -65,8 +65,8 @@ export class ModalComponent implements OnInit {
         /**
          * Remove event listeners
          */
-        window.removeEventListener( 'keydown', this.keyDownEventListeners );
-        this.overlay.nativeElement.removeEventListener( 'click', this.clickEventListeners );
+        window.removeEventListener( 'keydown', this.keyDownEvents );
+        this.overlay.nativeElement.removeEventListener( 'click', this.clickEvents );
 
         /**
          * Allow body scrolling
