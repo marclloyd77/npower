@@ -84,7 +84,7 @@ export class ModalComponent implements OnInit {
 
         setTimeout( () => {
             this.modalOpenButton.nativeElement.focus();
-        }, 0 );
+        }, 100 );
 
 
         this.showModal = false;
