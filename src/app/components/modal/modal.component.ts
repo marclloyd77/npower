@@ -21,6 +21,11 @@ export class ModalComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        /**
+         * Events for focus trap and closing modal on escape
+         * @param e
+         */
         this.keyDownEvents = ( e ) => {
             if ( e.code === 'Escape' ) {
                 this.closeModal();
@@ -32,12 +37,20 @@ export class ModalComponent implements OnInit {
             }
         };
 
+        /**
+         * Event for closing modal on overlay click
+         * @param e
+         */
         this.clickEvents = ( e ) => {
             if ( e.srcElement.className ) {
                 this.closeModal();
             }
         };
 
+        /**
+         * Event for closing modal using enter/space when close button is in focus
+         * @param e
+         */
         this.closeButtonEvents = ( e ) => {
             if ( e.code === 'Enter' || e.code === 'Space' ) {
                 this.closeModal();
@@ -82,10 +95,12 @@ export class ModalComponent implements OnInit {
          */
         document.getElementsByTagName( 'body' )[ 0 ].removeAttribute( 'style' );
 
+        /**
+         * Give focus back to open button
+         */
         setTimeout( () => {
             this.modalOpenButton.nativeElement.focus();
         }, 100 );
-
 
         this.showModal = false;
     }
